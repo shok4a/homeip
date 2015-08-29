@@ -6,6 +6,7 @@ class App {
   def myHandler(myCount: Int, context: Context): String = {
     val logger = context.getLogger
     logger.log("received : " + myCount)
+    logger.log("version : " + 1)
     String.valueOf(myCount)
   }
 }
