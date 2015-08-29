@@ -9,6 +9,6 @@ test:
     - sbt test
 deployment:
   production:
-    branch: echo
+    branch: master
     commands:
       - ./deploy.sh
