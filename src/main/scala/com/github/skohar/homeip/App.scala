@@ -8,4 +8,5 @@ class App {
     logger.log("received : " + myCount)
     String.valueOf(myCount)
   }
+  ""
 }
