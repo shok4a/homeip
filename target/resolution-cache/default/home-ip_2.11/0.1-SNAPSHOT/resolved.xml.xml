@@ -4,7 +4,7 @@
 		module="home-ip_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20150829060639"
+		publication="20150829160545"
 	>
 		<description>
 		home-ip
@@ -27,9 +27,7 @@
 	</configurations>
 	<publications>
 		<artifact name="home-ip_2.11" type="pom" ext="pom" conf="pom"/>
-		<artifact name="home-ip_2.11" type="jar" ext="jar" conf="compile"/>
-		<artifact name="home-ip_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
-		<artifact name="home-ip_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		<artifact name="home-ip_2.11" type="jar" ext="jar" conf="optional" e:classifier="download, resolveClassifiers, resolveSbtClassifiers"/>
 	</publications>
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.6" conf="scala-tool->default,optional(default)"/>

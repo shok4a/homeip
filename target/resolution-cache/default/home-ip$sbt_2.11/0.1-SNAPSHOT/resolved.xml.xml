@@ -4,7 +4,7 @@
 		module="home-ip$sbt_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20150829060408"
+		publication="20150829160551"
 	/>
 	<configurations>
 		<conf name="default" visibility="public"/>

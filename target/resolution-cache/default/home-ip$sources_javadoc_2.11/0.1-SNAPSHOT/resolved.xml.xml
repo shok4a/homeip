@@ -4,7 +4,7 @@
 		module="home-ip$sources_javadoc_2.11"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20150829060410"
+		publication="20150829160552"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>
