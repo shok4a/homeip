@@ -11,7 +11,7 @@ import scala.util.Try
 
 class App {
 
-  def myHandler(myCount: String, context: Context): String = {
+  def myHandler(myCount: String,myCount2:String, context: Context): String = {
     val config = new Config()
     (for {
       address <- Try(InetAddress.getByName(myCount)).toOption
