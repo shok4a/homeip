@@ -1,10 +1,8 @@
 package com.github.skohar.homeip
 
-import com.typesafe.config.ConfigFactory
+import play.api.libs.json.Json
 
-class Config {
-  private val config = ConfigFactory.load
-  val HostedZoneId = config.getString("hostedZoneId")
-  val HostName = config.getString("hostName")
-  val TTL = config.getLong("ttl")
+object Config {
+  implicit val reads = Json.reads[Config]
 }
+case class Config(hostedZoneId: String, hostName: String, ttl: Long)
