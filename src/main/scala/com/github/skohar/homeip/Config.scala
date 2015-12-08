@@ -1,8 +1,10 @@
 package com.github.skohar.homeip
 
+import com.github.tototoshi.play.json.JsonNaming
 import play.api.libs.json.Json
 
 object Config {
-  implicit val reads = Json.reads[Config]
+  implicit val configFormat = JsonNaming.snakecase(Json.format[Config])
 }
+
 case class Config(hostedZoneId: String, hostName: String, ttl: Long)
