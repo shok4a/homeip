@@ -9,14 +9,14 @@ import com.amazonaws.services.s3.AmazonS3Client
 import play.api.libs.json.Json
 
 import scala.collection.JavaConversions._
-import scala.util.Try
+import scala.util.control.Exception._
 
 class App {
 
   def handler(ipAddress: String, context: Context): String = {
     (for {
-      config <- loadConfig
-      address <- Try(InetAddress.getByName(ipAddress)).toOption
+      config <- loadConfig.right
+      address <- (allCatch either InetAddress.getByName(ipAddress)).right
     } yield {
       val recordSet = new AmazonRoute53Client()
           .listResourceRecordSets(new ListResourceRecordSetsRequest(config.hostedZoneId)).getResourceRecordSets
@@ -31,12 +31,12 @@ class App {
       val batch = new ChangeBatch(change :: Nil)
       val request = new ChangeResourceRecordSetsRequest(config.hostedZoneId, batch)
       new AmazonRoute53Client().changeResourceRecordSets(request)
-    }) match {
-      case Some(_) => "OK"
-      case None => ""
-    }
+    }).fold(
+      t => t.toString,
+      x => x.toString
+    )
   }
 
-  def loadConfig: Option[Config] =
-    Json.parse(new AmazonS3Client().getObject("homeip1", "env.json").getObjectContent).asOpt[Config]
+  def loadConfig =
+    allCatch either Json.parse(new AmazonS3Client().getObject("homeip1", "env.json").getObjectContent).as[Config]
 }
