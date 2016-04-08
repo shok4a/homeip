@@ -1,4 +1,4 @@
-name := "home-ip"
+name := "homeip"
 
 scalaVersion := "2.11.7"
 
